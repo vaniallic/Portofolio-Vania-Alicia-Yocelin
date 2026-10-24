@@ -9,9 +9,13 @@ export function Stage({ project, compact = false }) {
   if (project.layout === 'web') {
     return (
       <div className={`stage-art web ${compact ? 'compact' : ''}`}>
-        {project.live && <span className="live-badge glass">Live · {host(project.live)}</span>}
         <div className="browser">
-          <div className="bar"><i /><i /><i /><span className="url">{host(project.live)}</span></div>
+          <div className="bar">
+            <i /><i /><i />
+            {project.live ? (
+              <a className="url" href={project.live} target="_blank" rel="noreferrer" tabIndex={-1}>{host(project.live)}</a>
+            ) : <span className="url" />}
+          </div>
           <img src={project.cover} alt={`${project.name} on desktop`} loading="lazy" />
         </div>
         {project.phones && project.phones[0] && (
@@ -22,7 +26,6 @@ export function Stage({ project, compact = false }) {
   }
   return (
     <div className={`stage-art mobile ${compact ? 'compact' : ''}`}>
-      {project.live && <span className="live-badge glass">Live · {host(project.live)}</span>}
       {project.phones.slice(0, 3).map((src, i) => (
         <div key={src} className={`phone ph-${i}`}><img src={src} alt={`${project.name} screen ${i + 1}`} loading="lazy" /></div>
       ))}
@@ -43,6 +46,11 @@ export function Thumb({ project }) {
 function Links({ p, onOpen }) {
   return (
     <span className="proj-acts">
+      {p.live && (
+        <a className="live-link" href={p.live} target="_blank" rel="noreferrer">
+          <i aria-hidden="true" /> Live · {host(p.live)}
+        </a>
+      )}
       <button type="button" className="btn primary" onClick={() => onOpen(p.gi)}>View case study <Icon name="arrowRight" size={14} /></button>
       {p.live && <a className="btn" href={p.live} target="_blank" rel="noreferrer">Live site <Icon name="external" size={13} /></a>}
       {p.repo && <a className="btn" href={p.repo} target="_blank" rel="noreferrer" aria-label={`${p.name} source code on GitHub`}><Icon name="github" size={15} /> Code</a>}
@@ -104,7 +112,6 @@ export default function Work({ onOpen, onAll }) {
                     <p className="sum">{pr.summary}</p>
                     <p className="role">{pr.role}</p>
                     <span className="stack">{pr.stack.map((s) => <span key={s}>{s}</span>)}</span>
-                    <Links p={pr} onOpen={onOpen} />
                   </div>
                 )}
               </li>
@@ -116,6 +123,7 @@ export default function Work({ onOpen, onAll }) {
         <div className="stage" style={{ '--i': 2 }}>
           <div key={p.id} className="stage-fade">
             <Stage project={p} />
+            <Links p={p} onOpen={onOpen} />
           </div>
         </div>
       </div>

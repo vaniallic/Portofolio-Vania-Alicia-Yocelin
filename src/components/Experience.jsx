@@ -100,6 +100,7 @@ function ExperienceDetail({ item, onClose }) {
 export default function Experience() {
   const [filter, setFilter] = useState('all');
   const [openId, setOpenId] = useState(null);
+  const [hotId, setHotId] = useState(null);
   const scroller = useRef(null);
   const drag = useRef({ active: false, x: 0, left: 0, moved: false });
   const wrapRef = useRef(null);
@@ -126,6 +127,16 @@ export default function Experience() {
     scroller.current && scroller.current.classList.remove('is-dragging');
   };
   const open = (id) => { if (!drag.current.moved) setOpenId(id); };
+
+  // photos only come out when the pointer is clearly inside the card (not on its edge)
+  const EDGE = 18;
+  const onCardMove = (e, id) => {
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const inside = e.clientX - r.left > EDGE && r.right - e.clientX > EDGE && e.clientY - r.top > EDGE && r.bottom - e.clientY > EDGE;
+    if (inside && hotId !== id) setHotId(id);
+    else if (!inside && hotId === id) setHotId(null);
+  };
 
   return (
     <section id="experience" className="section experience" aria-labelledby="exp-title">
@@ -160,10 +171,10 @@ export default function Experience() {
           onPointerLeave={onUp}
           aria-label="Experience timeline, scroll sideways"
         >
-          <div className={`track ${inView ? 'is-in' : ''}`} key={filter}>
+          <div className={`track ${inView ? 'is-in' : ''} ${hotId ? 'has-hot' : ''}`} key={filter}>
             {items.length === 0 && <p className="empty-note">Nothing here yet, coming soon.</p>}
             {items.map((e, i) => (
-              <article key={e.id} style={{ '--i': i }} className={`tl-item cat-${cats(e)[0]} ${i % 2 === 0 ? 'up' : 'down'} ${e.photos ? 'has-photos' : ''}`}>
+              <article key={e.id} style={{ '--i': i }} className={`tl-item cat-${cats(e)[0]} ${i % 2 === 0 ? 'up' : 'down'} ${e.photos ? 'has-photos' : ''} ${hotId === e.id ? 'is-hot' : ''}`}>
                 <span className="tl-node" />
                 <span className="tl-stem" />
                 <span className="tl-year">{e.year}</span>
@@ -172,7 +183,16 @@ export default function Experience() {
                     <img src={photoSrc(e, n)} alt="" loading="lazy" draggable="false" />
                   </span>
                 ))}
-                <button type="button" className="xp glass" onClick={() => open(e.id)} aria-haspopup="dialog">
+                <button
+                  type="button"
+                  className="xp glass"
+                  onClick={() => open(e.id)}
+                  onPointerMove={(ev) => onCardMove(ev, e.id)}
+                  onPointerLeave={() => setHotId((h) => (h === e.id ? null : h))}
+                  onFocus={() => setHotId(e.id)}
+                  onBlur={() => setHotId((h) => (h === e.id ? null : h))}
+                  aria-haspopup="dialog"
+                >
                   <span className="cat">{labelOf(e)}</span>
                   <span className="when">{e.period}</span>
                   <span className="xp-title">{e.title}</span>

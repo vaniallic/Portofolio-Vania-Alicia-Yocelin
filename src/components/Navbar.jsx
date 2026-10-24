@@ -12,7 +12,7 @@ const LINKS = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export default function Navbar({ active, theme, themes, setTheme }) {
+export default function Navbar({ active, theme, themes, setTheme, onContact }) {
   const [visible, setVisible] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,6 +39,8 @@ export default function Navbar({ active, theme, themes, setTheme }) {
   const go = (e, id) => {
     e.preventDefault();
     setMenuOpen(false);
+    // Contact opens the contact form page instead of scrolling to the footer
+    if (id === 'contact' && onContact) { onContact(); return; }
     scrollToId(id);
   };
 

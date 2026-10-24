@@ -88,12 +88,14 @@
 .xp-pills { gap: 6px; }
 .xp-pills i { font-style: normal; font-size: 11px; padding: 2px 9px; border-radius: 999px; background: var(--chip-bg); border: 1px solid var(--chip-border); }
 .xp-more { display: inline-flex; align-items: center; gap: 5px; color: var(--label); white-space: nowrap; }
-.experience .xp:hover, .experience .xp:focus-visible {
-  transform: translateY(-6px); border-color: var(--c);
+.experience .tl-item.is-hot .xp {
+  border-color: var(--c);
   box-shadow: var(--glass-shadow), 0 0 0 1px color-mix(in srgb, var(--c) 35%, transparent);
 }
 /* the other cards step back while one is hovered */
-.track:has(.xp:hover) .tl-item:not(:has(.xp:hover)) .xp { opacity: 0.45; filter: saturate(0.7); }
+.track.has-hot .tl-item:not(.is-hot) .xp { opacity: 0.45; filter: saturate(0.7); }
+/* the card itself never moves, so its edge stays put under the cursor */
+.experience .xp:hover { transform: none; }
 
 .polaroid {
   position: absolute; z-index: 1; left: 190px; width: 132px; padding: 7px 7px 26px;
@@ -107,9 +109,9 @@
 .tl-item.down .polaroid.p1 { top: calc(50% + 84px); }
 .tl-item.down .polaroid.p2 { top: calc(50% + 40px); }
 .polaroid.p2 { z-index: 0; }
-.tl-item:has(.xp:hover) .polaroid, .tl-item:has(.xp:focus-visible) .polaroid { opacity: 1; }
-.tl-item:has(.xp:hover) .polaroid.p1, .tl-item:has(.xp:focus-visible) .polaroid.p1 { left: 352px; transform: rotate(5deg); }
-.tl-item:has(.xp:hover) .polaroid.p2, .tl-item:has(.xp:focus-visible) .polaroid.p2 { left: 326px; transform: rotate(-7deg); transition-delay: 0.07s; }
+.tl-item.is-hot .polaroid { opacity: 1; }
+.tl-item.is-hot .polaroid.p1 { left: 352px; transform: rotate(5deg); }
+.tl-item.is-hot .polaroid.p2 { left: 326px; transform: rotate(-7deg); transition-delay: 0.07s; }
 
 /* ---------- EXPERIENCE: detail panel ---------- */
 .xp-layer { position: fixed; inset: 0; z-index: 80; }
@@ -165,8 +167,7 @@
 @media (max-width: 820px) {
   .experience .tl-item { width: auto; }
   .polaroid { display: none; }
-  .experience .xp:hover { transform: none; }
-  .track:has(.xp:hover) .tl-item:not(:has(.xp:hover)) .xp { opacity: 1; filter: none; }
+  .track.has-hot .tl-item:not(.is-hot) .xp { opacity: 1; filter: none; }
   .xp .xp-text { font-size: 12.5px; }
   .xp-panel {
     top: auto; left: 0; width: 100%; max-height: 88vh; padding: 14px 18px 28px; border-left: 0;
@@ -318,3 +319,69 @@
 [data-theme='sunset'] .pl-body .role, [data-theme='sunset'] .swipe-info .role { color: #4a0626; font-weight: 400; }
 [data-theme='sunset'] .proj-list.v3 .pl-head { color: rgba(45, 16, 54, 0.75); }
 @media (min-width: 821px) and (max-width: 1439px) { .skills .deck { gap: 12px; } }
+
+/* landing: the star floats a little higher, just out of the girl's reach */
+.landing { --sy: 23; }
+@media (max-width: 820px) { .landing { --sy: 25; } }
+
+/* My Work v3.1: actions sit under the preview, "View all" lines up with the label */
+.work .work-head { align-items: flex-start; }
+.work .work-grid { margin-top: 18px; }
+.work .stage { padding-top: 0; }
+.work .stage-art { height: 470px; }
+.stage-art.mobile .ph-1 { top: 0; }
+.stage-art.mobile .ph-0, .stage-art.mobile .ph-2 { top: 44px; }
+.stage-art.web .browser { top: 0; }
+.stage-art.web .phone { top: 96px; }
+.browser .bar a.url { color: rgba(255, 243, 224, 0.75); text-decoration: none; }
+.browser .bar a.url:hover { color: #fff3e0; text-decoration: underline; }
+.stage .proj-acts { justify-content: flex-end; align-items: center; margin-top: 4px; }
+.live-link { display: inline-flex; align-items: center; gap: 7px; margin-right: auto; font-size: 13px; color: var(--text-dim); }
+.live-link i { width: 7px; height: 7px; border-radius: 50%; background: #3fbf7f; box-shadow: 0 0 8px #3fbf7f; }
+.live-link:hover { color: var(--text); text-decoration: underline; }
+.proj-acts .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; line-height: 1; }
+@media (max-width: 820px) {
+  .swipe-info .proj-acts { justify-content: flex-start; }
+  .swipe-info .live-link { width: 100%; margin-bottom: 2px; font-size: 12px; }
+}
+
+/* My Work v3.2: the preview takes its real height, actions get breathing room */
+.work .stage .stage-art.web { height: auto; padding: 0 0 56px; }
+.work .stage .stage-art.web .browser { position: relative; width: 84%; transform: rotate(-1.5deg); }
+.work .stage:hover .stage-art.web .browser { transform: rotate(-0.8deg) translateY(-4px); }
+.work .stage .stage-art.web .phone { top: auto; bottom: 0; right: 1%; width: 172px; }
+.work .stage .stage-art.mobile { height: 520px; }
+.work .stage .proj-acts { margin-top: 36px; gap: 12px; padding-top: 22px; border-top: 1px solid var(--footer-line); }
+.work .stage .proj-acts .btn { height: 44px; padding: 0 20px; font-size: 13.5px; }
+.work .work-grid { gap: clamp(40px, 5vw, 80px); }
+.pl-body { padding-bottom: 26px; }
+.pl-body .role { margin-top: 12px; }
+.pl-body .stack { margin-top: 16px; gap: 8px; }
+.proj-list.v3 .pl-head { padding: 20px 0; }
+
+/* phone swipe cards: browser in flow, small phone tucked at the corner */
+.swipe-card .stage-art.web { height: auto; padding: 14px 0 22px; }
+.swipe-card .stage-art.web .browser { position: relative; top: 0; width: 86%; transform: rotate(-1.5deg); }
+.swipe-card .stage-art.web .phone { top: auto; bottom: 0; right: 0; width: 78px; }
+.swipe-info { margin-top: 14px; padding: 16px 16px 18px; }
+.swipe-info .proj-acts { margin-top: 14px; gap: 8px; }
+
+/* v3.3: mobile-style previews hug their phones; buttons sit closer */
+.work .stage .stage-art.mobile { height: 486px; }
+.work .stage .stage-art.mobile + .proj-acts { margin-top: 26px; }
+
+/* phone swipe cards: same preview height for every project, info boxes line up */
+.swipe { align-items: stretch; }
+.swipe-card { display: flex; flex-direction: column; }
+.swipe-card .stage-art.web, .swipe-card .stage-art.mobile { height: 250px; padding: 0; }
+.swipe-card .stage-art.web .browser { position: absolute; top: 22px; left: 0; }
+.swipe-card .stage-art.web .phone { bottom: 6px; }
+.swipe-card .stage-art.mobile .phone { top: 30px; }
+.swipe-card .stage-art.mobile .ph-1 { top: 12px; }
+.swipe-card .swipe-info { flex: 1; display: flex; flex-direction: column; }
+.swipe-card .swipe-info .proj-acts { margin-top: auto; padding-top: 14px; }
+
+/* projects that are still being built */
+.badge.is-status { background: rgba(240, 207, 142, 0.92); color: #3a2208; }
+.status-chip { display: inline-flex; margin-left: 10px; padding: 2px 10px; border-radius: 999px; font-size: 10px; letter-spacing: 0.12em; background: rgba(240, 207, 142, 0.18); color: #f0cf8e; border: 1px solid rgba(240, 207, 142, 0.45); vertical-align: middle; }
+[data-theme='sunset'] .status-chip, [data-theme='clean'] .status-chip { color: #7a4a08; background: rgba(240, 207, 142, 0.35); border-color: rgba(122, 74, 8, 0.3); }

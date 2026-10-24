@@ -40,7 +40,7 @@ export default function ProjectDetail({ index, onClose, onGo }) {
 
       <header className={`case-hero ${web ? 'is-web' : 'is-mobile'}`}>
         <div className="case-info">
-          <div className="kind">{p.type} · {p.year}</div>
+          <div className="kind">{p.type} · {p.year}{p.status && <span className="status-chip">{p.status}</span>}</div>
           <h1 id="detail-title">{p.name}</h1>
           <p className="sum">{p.summary}</p>
           <div className="case-facts">

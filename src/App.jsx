@@ -56,7 +56,7 @@ export default function App() {
     <>
       <Backdrop />
       <Cursor />
-      <Navbar active={active} theme={theme} themes={themes} setTheme={setTheme} />
+      <Navbar active={active} theme={theme} themes={themes} setTheme={setTheme} onContact={openContact} />
       <main className="content">
         <Landing theme={theme} themes={themes} setTheme={setTheme} />
         <Hook onContact={openContact} />

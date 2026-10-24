@@ -48,7 +48,7 @@ export default function AllProjects({ onClose, onOpen }) {
             <button key={p.id} type="button" className="proj-card glass" style={{ '--i': i }} onClick={() => onOpen(p.gi)}>
               <span className="proj-thumb">
                 <Thumb project={p} />
-                {p.featured !== false && <span className="badge">Featured</span>}
+                {p.status ? <span className="badge is-status">{p.status}</span> : p.featured !== false && <span className="badge">Featured</span>}
               </span>
               <span className="proj-meta">
                 <span className="pm-top"><span className="kind">{p.type}</span><span className="year">{p.year}</span></span>

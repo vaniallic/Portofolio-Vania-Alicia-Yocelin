@@ -492,12 +492,12 @@
    /* star group */
    .star-line {
      position: absolute; left: 50%; top: 0; z-index: 3;
-     height: calc((30 * var(--u) + var(--dy)) / 0.713); width: auto; aspect-ratio: 308 / 992;
+     height: calc((var(--sy, 30) * var(--u) + var(--dy)) / 0.713); width: auto; aspect-ratio: 308 / 992;
      transform: translateX(-50%); transform-origin: 50% 0;
      filter: drop-shadow(0 0 10px rgba(255, 180, 110, 0.5));
      animation: dropIn 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) backwards, sway 8s ease-in-out 1.6s infinite;
    }
-   .star-halo, .star-rays, .star-button, .follow { position: absolute; left: 50%; top: calc(30 * var(--u) + var(--dy)); }
+   .star-halo, .star-rays, .star-button, .follow { position: absolute; left: 50%; top: calc(var(--sy, 30) * var(--u) + var(--dy)); }
    .star-halo {
      z-index: 2; width: calc(28 * var(--u)); height: calc(28 * var(--u)); border-radius: 50%; pointer-events: none;
      background: radial-gradient(circle, rgba(255, 214, 150, 0.6), rgba(217, 115, 82, 0.16) 45%, transparent 70%);
