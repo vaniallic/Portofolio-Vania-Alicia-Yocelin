@@ -2,45 +2,51 @@ import { useEffect, useRef, useState } from 'react';
 import Icon from './Icon.jsx';
 import { projects, profile } from '../data/content.js';
 
-/* Placeholder screen used until a real screenshot is added in content.js */
-function PlaceholderUI({ name, compact }) {
+const host = (url) => (url || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
+
+/* Real screenshots: a browser + phone for web apps, three phones for mobile apps */
+export function Stage({ project, compact = false }) {
+  if (project.layout === 'web') {
+    return (
+      <div className={`stage-art web ${compact ? 'compact' : ''}`}>
+        {project.live && <span className="live-badge glass">Live · {host(project.live)}</span>}
+        <div className="browser">
+          <div className="bar"><i /><i /><i /><span className="url">{host(project.live)}</span></div>
+          <img src={project.cover} alt={`${project.name} on desktop`} loading="lazy" />
+        </div>
+        {project.phones && project.phones[0] && (
+          <div className="phone"><img src={project.phones[0]} alt={`${project.name} on mobile`} loading="lazy" /></div>
+        )}
+      </div>
+    );
+  }
   return (
-    <div className="ph-ui">
-      <div className="nav-ph"><i /><span><i /><i /><i /></span></div>
-      <div className="h" style={{ width: compact ? '80%' : '58%' }} />
-      <div className="h" style={{ width: compact ? '55%' : '38%' }} />
-      <div className="p" style={{ width: '70%', marginTop: 10 }} />
-      <div className="p" style={{ width: '52%' }} />
-      <div className="a" />
-      {!compact && <div className="cards"><div /><div /><div /></div>}
-      <div className="ph-label">{name} · screenshot soon</div>
+    <div className={`stage-art mobile ${compact ? 'compact' : ''}`}>
+      {project.live && <span className="live-badge glass">Live · {host(project.live)}</span>}
+      {project.phones.slice(0, 3).map((src, i) => (
+        <div key={src} className={`phone ph-${i}`}><img src={src} alt={`${project.name} screen ${i + 1}`} loading="lazy" /></div>
+      ))}
     </div>
   );
 }
 
-export function Screens({ project, showChips = true }) {
-  const host = project.live ? project.live.replace(/^https?:\/\//, '').replace(/\/$/, '') : `${project.id}.vercel.app`;
+/* Small preview used on the All projects page */
+export function Thumb({ project }) {
+  if (project.layout === 'web') return <img src={project.cover} alt="" loading="lazy" />;
   return (
-    <div className="stage-art">
-      {project.live && <span className="live-badge glass">Live</span>}
-      <div className="browser">
-        <div className="bar"><i /><i /><i /><span className="url">{host}</span></div>
-        <div className="screen">
-          {project.desktop ? <img src={project.desktop} alt={`${project.name} on desktop`} loading="lazy" /> : <PlaceholderUI name={project.name} />}
-        </div>
-      </div>
-      <div className="phone">
-        <div className="screen">
-          {project.mobile ? <img src={project.mobile} alt={`${project.name} on mobile`} loading="lazy" /> : <PlaceholderUI name={project.name} compact />}
-        </div>
-      </div>
-      {showChips && (
-        <div className="stack-chip glass">
-          <small>BUILT WITH</small>
-          {project.stack.map((s) => <span key={s}>{s}</span>)}
-        </div>
-      )}
-    </div>
+    <span className="thumb-phones">
+      {project.phones.slice(0, 3).map((src) => <img key={src} src={src} alt="" loading="lazy" />)}
+    </span>
+  );
+}
+
+function Links({ p, onOpen }) {
+  return (
+    <span className="proj-acts">
+      <button type="button" className="btn primary" onClick={() => onOpen(p.gi)}>View case study <Icon name="arrowRight" size={14} /></button>
+      {p.live && <a className="btn" href={p.live} target="_blank" rel="noreferrer">Live site <Icon name="external" size={13} /></a>}
+      {p.repo && <a className="btn" href={p.repo} target="_blank" rel="noreferrer" aria-label={`${p.name} source code on GitHub`}><Icon name="github" size={15} /> Code</a>}
+    </span>
   );
 }
 
@@ -56,7 +62,7 @@ export default function Work({ onOpen, onAll }) {
     const el = swipe.current;
     if (!el) return undefined;
     const on = () => {
-      const w = el.firstElementChild ? el.firstElementChild.getBoundingClientRect().width + 14 : 1;
+      const w = el.firstElementChild ? el.firstElementChild.getBoundingClientRect().width : 1;
       setSlide(Math.round(el.scrollLeft / w));
     };
     el.addEventListener('scroll', on, { passive: true });
@@ -75,23 +81,32 @@ export default function Work({ onOpen, onAll }) {
         </button>
       </div>
 
-      {/* desktop: list + sneak peek */}
+      {/* desktop: list + preview */}
       <div className="work-grid" data-stagger>
         <div style={{ '--i': 0 }}>
-          <ul className="proj-list">
+          <ul className="proj-list v3">
             {featured.map((pr, i) => (
-              <li key={pr.id}>
+              <li key={pr.id} className={i === active ? 'is-active' : ''}>
                 <button
                   type="button"
-                  className={i === active ? 'is-active' : ''}
+                  className="pl-head"
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
-                  onClick={() => (i === active ? onOpen(pr.gi) : setActive(i))}
-                  aria-current={i === active}
+                  onClick={() => setActive(i)}
+                  aria-expanded={i === active}
                 >
                   <span className="t">{pr.name}</span>
+                  <span className="y">{pr.year}</span>
                   <span className="k">{pr.type}</span>
                 </button>
+                {i === active && (
+                  <div className="pl-body">
+                    <p className="sum">{pr.summary}</p>
+                    <p className="role">{pr.role}</p>
+                    <span className="stack">{pr.stack.map((s) => <span key={s}>{s}</span>)}</span>
+                    <Links p={pr} onOpen={onOpen} />
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -100,32 +115,23 @@ export default function Work({ onOpen, onAll }) {
 
         <div className="stage" style={{ '--i': 2 }}>
           <div key={p.id} className="stage-fade">
-            <Screens project={p} />
-            <div className="stage-info">
-              <div>
-                <div className="kind">{p.type}</div>
-                <h3>{p.name}</h3>
-                <p>{p.summary}</p>
-              </div>
-              <button type="button" className="btn primary" onClick={() => onOpen(p.gi)}>
-                View project <Icon name="arrowRight" size={14} />
-              </button>
-            </div>
+            <Stage project={p} />
           </div>
         </div>
       </div>
 
-      {/* mobile: one project per swipe */}
+      {/* phone: one project per swipe */}
       <div className="work-mobile">
         <div className="swipe" ref={swipe}>
           {featured.map((pr) => (
             <div key={pr.id} className="swipe-card">
-              <Screens project={pr} showChips={false} />
+              <Stage project={pr} compact />
               <div className="swipe-info glass">
-                <div className="kind">{pr.type}</div>
+                <div className="kind">{pr.type} · {pr.year}</div>
                 <h3>{pr.name}</h3>
                 <p>{pr.summary}</p>
-                <button type="button" className="btn primary" onClick={() => onOpen(pr.gi)}>View project <Icon name="arrowRight" size={13} /></button>
+                <p className="role">{pr.role}</p>
+                <Links p={pr} onOpen={onOpen} />
               </div>
             </div>
           ))}

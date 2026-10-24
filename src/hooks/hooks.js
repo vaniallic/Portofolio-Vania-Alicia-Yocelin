@@ -80,7 +80,7 @@ export function useSceneSnap() {
     };
     goHookHandler = () => go(hookTop());
 
-    const overlayOpen = () => Boolean(document.querySelector('.page-overlay, .detail, .menu.is-open'));
+    const overlayOpen = () => Boolean(document.querySelector('.page-overlay, .detail, .xp-layer, .menu.is-open'));
 
     const onWheel = (e) => {
       if (overlayOpen()) return;

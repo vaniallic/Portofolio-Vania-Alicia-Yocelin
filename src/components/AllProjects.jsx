@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Icon from './Icon.jsx';
 import { projects } from '../data/content.js';
+import { Thumb } from './Work.jsx';
 
 /* Full-screen page with every project, filterable by category. */
 export default function AllProjects({ onClose, onOpen }) {
@@ -33,7 +34,7 @@ export default function AllProjects({ onClose, onOpen }) {
           <div>
             <span className="label">Archive</span>
             <h1 id="all-title" className="h2 page-title">All <em>projects.</em></h1>
-            <p className="page-sub">Everything I&apos;ve built so far, from class projects to personal experiments.</p>
+            <p className="page-sub">Everything I&apos;ve designed and built so far.</p>
           </div>
           <div className="tabs" role="group" aria-label="Filter projects">
             {cats.map((c) => (
@@ -46,11 +47,7 @@ export default function AllProjects({ onClose, onOpen }) {
           {list.map((p, i) => (
             <button key={p.id} type="button" className="proj-card glass" style={{ '--i': i }} onClick={() => onOpen(p.gi)}>
               <span className="proj-thumb">
-                {p.desktop ? (
-                  <img src={p.desktop} alt="" loading="lazy" />
-                ) : (
-                  <span className="thumb-ph"><i /><i /><i /><b /></span>
-                )}
+                <Thumb project={p} />
                 {p.featured !== false && <span className="badge">Featured</span>}
               </span>
               <span className="proj-meta">

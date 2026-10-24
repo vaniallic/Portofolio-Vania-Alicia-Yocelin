@@ -10,11 +10,9 @@ export const profile = {
   role: 'Computer Science Student',
   tagline: 'The girl behind the code',
   landingLine: 'Where code meets curiosity and creativity.',
-  // TODO: pick the email you want recruiters to use
   email: 'vania.yocelin@binus.ac.id',
-  // TODO: replace with your real links
-  linkedin: 'https://www.linkedin.com/in/your-username',
-  github: 'https://github.com/your-username',
+  linkedin: 'https://www.linkedin.com/in/vania-alicia-yocelin-936040440',
+  github: 'https://github.com/vaniallic',
   // Put your CV file in the /public folder with this exact name
   cv: '/Vania-Alicia-Yocelin-CV.pdf',
   location: 'Jakarta, Indonesia',
@@ -29,85 +27,230 @@ export const contactForm = {
   needs: ['Internship opportunity', 'Freelance / project', 'Collaboration', 'Just saying hi'],
 };
 
+// The three numbers inside the book on the first screen
 export const stats = [
-  { value: 5, suffix: '', label: 'projects shipped' },
-  { value: 10, suffix: '+', label: 'skills' },
+  { value: 3, suffix: '', label: 'live apps' },
+  { value: 35, suffix: '+', label: 'tools & skills' },
   { value: 2, suffix: '+', label: 'years of coding' },
 ];
 
+/* ─────────────── ABOUT ─────────────── */
 export const about = {
-  title: "Designer's eye.",
-  titleAccent: "Engineer's mindset.",
+  title: 'Every project starts',
+  titleAccent: 'as a closed book.',
   paragraphs: [
-    'Computer Science student at BINUS University with a background in graphic design. I care about how a product feels to use, not only whether it works, and I bring that attention to detail into every interface I build.',
-    "Right now I'm focused on web development while leading teams in my campus cybersecurity community, where I've learned to plan, communicate, and deliver with other people.",
+    "I'm a Computer Science student at BINUS University, specializing in Artificial Intelligence, with a background in graphic design. I work across the full journey of a product, from understanding the problem and designing the interface to building, testing, and deploying it.",
+    "Beyond the code, I lead teams in the BINUS Cyber Security Community, where I've learned to plan, communicate clearly, and deliver results with other people.",
   ],
-  chips: ['React', 'JavaScript', 'HTML', 'CSS', 'Python', 'C / C++', 'Figma', 'Canva'],
+  chips: ['UI/UX Design', 'Leadership', 'Public Speaking', 'Event Management', 'Teamwork'],
   facts: [
-    { label: 'Currently', value: 'Computer Science at BINUS University · Class of 2028', color: 'opal' },
+    { label: 'Currently', value: 'Computer Science (AI stream), BINUS University · Class of 2028', color: 'opal' },
     { label: 'Based in', value: 'Jakarta, Indonesia', color: 'fae' },
-    { label: 'Open to', value: 'Internships & collaborative projects', color: 'blood' },
-    { label: 'Strengths', value: 'UI & visual design · Team leadership · Fast learner', color: 'opal' },
-    { label: 'Currently learning', value: 'React and modern front-end development', color: 'fae' },
+    { label: 'Open to', value: 'Front-end & UI/UX internships, open to full-stack and AI/ML engineer roles', color: 'blood' },
+    { label: 'Strengths', value: 'UI/UX design · Front-end development · Leadership · Public speaking', color: 'opal' },
+    { label: 'This semester', value: 'Deep Learning · Speech Recognition · Operating Systems · Network Security', color: 'fae' },
+    { label: 'Languages', value: 'Indonesian · English', color: 'blood' },
   ],
 };
 
-// category: 'languages' | 'web' | 'tools'
-// seal: short text shown in the circle on the card front
-// tone: 'fae' | 'opal' | 'blood'
-// level: shown on the back of the card
+/* ─────────────── SKILLS ───────────────
+   category: 'languages' | 'web' | 'ai' | 'cloud' | 'security' | 'tools'
+   icon: key in skillIcons.js     color: the logo's own colour (shown on hover)
+   tone: colour of the seal       used: shown on the back of the card
+   level: 'Used in projects' | 'Used in labs' | 'Coursework' | 'Daily'            */
 export const skills = [
-  { name: 'Python', category: 'languages', seal: 'Py', tone: 'fae', level: 'Comfortable', use: 'Scripts, data tasks and my first algorithms classes.' },
-  { name: 'C', category: 'languages', seal: 'C', tone: 'opal', level: 'Comfortable', use: 'Learning how memory and pointers really work.' },
-  { name: 'C++', category: 'languages', seal: 'C++', tone: 'blood', level: 'Comfortable', use: 'Data structures and object-oriented programming coursework.' },
-  { name: 'HTML', category: 'web', seal: '</>', tone: 'fae', level: 'Confident', use: 'Semantic, accessible structure for every page I build.' },
-  { name: 'CSS', category: 'web', seal: '{ }', tone: 'opal', level: 'Confident', use: 'Layouts, responsive design and animation.' },
-  { name: 'React', category: 'web', seal: 'Re', tone: 'blood', level: 'Learning', use: 'Component-based interfaces, like this portfolio.' },
-  { name: 'JavaScript', category: 'web', seal: 'JS', tone: 'fae', level: 'Comfortable', use: 'Interactivity and logic in the browser.' },
-  { name: 'VS Code', category: 'tools', seal: 'VS', tone: 'opal', level: 'Daily driver', use: 'Where all my code gets written and debugged.' },
-  { name: 'Figma', category: 'tools', seal: 'Fi', tone: 'fae', level: 'Comfortable', use: 'Wireframes and UI mockups before I write code.' },
-  { name: 'Canva', category: 'tools', seal: 'Ca', tone: 'blood', level: 'Confident', use: 'Posters, feeds and brand assets for organizations.' },
-  { name: 'Illustration', category: 'tools', seal: '✎', tone: 'fae', level: 'Confident', use: 'Digital painting and visual storytelling.' },
-  { name: 'Leadership', category: 'tools', seal: '◈', tone: 'opal', level: 'Proven', use: 'Leading teams and events in campus organizations.' },
+  { name: 'Python', category: 'languages', icon: 'python', color: '#3776AB', tone: 'fae', level: 'Coursework', used: 'AI stream coursework and model training in Colab' },
+  { name: 'C', category: 'languages', icon: 'c', color: '#A8B9CC', tone: 'opal', level: 'Coursework', used: 'Algorithm and programming coursework' },
+  { name: 'C++', category: 'languages', icon: 'cplusplus', color: '#00599C', tone: 'blood', level: 'Coursework', used: 'Object-oriented programming coursework' },
+  { name: 'JavaScript', category: 'languages', icon: 'javascript', color: '#F7DF1E', tone: 'fae', level: 'Used in projects', used: 'Sinéfolis, MediMeet and this portfolio' },
+  { name: 'Dart', category: 'languages', icon: 'dart', color: '#0175C2', tone: 'opal', level: 'Used in projects', used: 'Waste2Taste' },
+  { name: 'SQL', category: 'languages', icon: 'sql', color: '#E07A5F', tone: 'blood', level: 'Used in projects', used: 'MediMeet database rules and database coursework' },
+  { name: 'HTML', category: 'languages', icon: 'html', color: '#E34F26', tone: 'fae', level: 'Used in projects', used: 'Every web project I build' },
+  { name: 'CSS', category: 'languages', icon: 'css', color: '#663399', tone: 'opal', level: 'Used in projects', used: 'Layouts, responsive design and animation' },
+
+  { name: 'React', category: 'web', icon: 'react', color: '#61DAFB', tone: 'blood', level: 'Used in projects', used: 'Sinéfolis, MediMeet and this portfolio' },
+  { name: 'Tailwind CSS', category: 'web', icon: 'tailwind', color: '#06B6D4', tone: 'fae', level: 'Used in projects', used: 'Sinéfolis and MediMeet' },
+  { name: 'Flutter', category: 'web', icon: 'flutter', color: '#02569B', tone: 'opal', level: 'Used in projects', used: 'Waste2Taste web app' },
+  { name: 'Node.js', category: 'web', icon: 'node', color: '#5FA04E', tone: 'blood', level: 'Used in projects', used: 'Waste2Taste serverless API' },
+  { name: 'PWA', category: 'web', icon: 'pwa', color: '#5A0FC8', tone: 'fae', level: 'Used in projects', used: 'MediMeet and Waste2Taste, installable on phones' },
+
+  { name: 'TensorFlow', category: 'ai', icon: 'tensorflow', color: '#FF6F00', tone: 'fae', level: 'Coursework', used: 'Deep learning coursework' },
+  { name: 'Keras', category: 'ai', icon: 'keras', color: '#D00000', tone: 'opal', level: 'Coursework', used: 'Deep learning coursework' },
+  { name: 'scikit-learn', category: 'ai', icon: 'sklearn', color: '#F7931E', tone: 'blood', level: 'Coursework', used: 'Machine learning coursework' },
+  { name: 'NumPy', category: 'ai', icon: 'numpy', color: '#4DABCF', tone: 'fae', level: 'Coursework', used: 'Data preparation for ML and vision tasks' },
+  { name: 'Pandas', category: 'ai', icon: 'pandas', color: '#E70488', tone: 'opal', level: 'Coursework', used: 'Data cleaning and analysis' },
+  { name: 'OpenCV', category: 'ai', icon: 'opencv', color: '#5C3EE8', tone: 'blood', level: 'Coursework', used: 'Computer vision coursework' },
+  { name: 'Matplotlib', category: 'ai', icon: 'matplotlib', color: '#11557C', tone: 'fae', level: 'Coursework', used: 'Plotting results and training curves' },
+
+  { name: 'Supabase', category: 'cloud', icon: 'supabase', color: '#3FCF8E', tone: 'opal', level: 'Used in projects', used: 'MediMeet accounts, database and security rules' },
+  { name: 'Firebase', category: 'cloud', icon: 'firebase', color: '#FFCA28', tone: 'blood', level: 'Used in projects', used: 'Waste2Taste auth, Firestore and hosting' },
+  { name: 'Vercel', category: 'cloud', icon: 'vercel', color: '#1b0a22', tone: 'fae', level: 'Used in projects', used: 'Deploys and serverless functions' },
+  { name: 'Gemini API', category: 'cloud', icon: 'gemini', color: '#8E75B2', tone: 'opal', level: 'Used in projects', used: 'Photo-to-ingredient scan in Waste2Taste' },
+
+  { name: 'Linux', category: 'security', icon: 'linux', color: '#E8A400', tone: 'blood', level: 'Used in labs', used: 'TryHackMe labs and the command line' },
+  { name: 'Kali Linux', category: 'security', icon: 'kali', color: '#557C94', tone: 'fae', level: 'Used in labs', used: 'TryHackMe labs' },
+  { name: 'Bash', category: 'security', icon: 'bash', color: '#4EAA25', tone: 'opal', level: 'Used in labs', used: 'Scripting and terminal work in labs' },
+  { name: 'Nmap', category: 'security', icon: 'nmap', color: '#4682B4', tone: 'blood', level: 'Used in labs', used: 'Port and service scanning in TryHackMe' },
+  { name: 'Wireshark', category: 'security', icon: 'wireshark', color: '#1679A7', tone: 'fae', level: 'Used in labs', used: 'Packet analysis in TryHackMe' },
+  { name: 'Burp Suite', category: 'security', icon: 'burp', color: '#FF6633', tone: 'opal', level: 'Used in labs', used: 'Web app testing in TryHackMe' },
+  { name: 'Netcat', category: 'security', icon: 'netcat', color: '#2E8B57', tone: 'blood', level: 'Used in labs', used: 'Listeners and reverse shells in labs' },
+
+  { name: 'Figma', category: 'tools', icon: 'figma', color: '#F24E1E', tone: 'fae', level: 'Used in projects', used: 'Designing Sinéfolis and MediMeet' },
+  { name: 'VS Code', category: 'tools', icon: 'vscode', color: '#007ACC', tone: 'opal', level: 'Daily', used: 'Where everything gets written' },
+  { name: 'Google Colab', category: 'tools', icon: 'colab', color: '#F9AB00', tone: 'blood', level: 'Coursework', used: 'Training AI models' },
+  { name: 'Git & GitHub', category: 'tools', icon: 'github', color: '#1b0a22', tone: 'fae', level: 'Used in projects', used: 'Version control for every project' },
+  { name: 'Canva', category: 'tools', icon: 'canva', color: '#00C4CC', tone: 'opal', level: 'Daily', used: 'Media and publications for organizations' },
 ];
 
 export const skillFilters = [
-  { id: 'all', label: 'All' },
   { id: 'languages', label: 'Languages' },
-  { id: 'web', label: 'Web' },
-  { id: 'tools', label: 'Tools & Design' },
+  { id: 'web', label: 'Web & Mobile' },
+  { id: 'ai', label: 'AI & Data' },
+  { id: 'cloud', label: 'Backend & Cloud' },
+  { id: 'security', label: 'Security' },
+  { id: 'tools', label: 'Tools' },
+  { id: 'all', label: 'All' },
 ];
 
-// category: 'leadership' | 'media' | 'learning' | 'volunteer' | 'achievement'
-// TODO: check every "description" line and rewrite it in your own words
+// "now: true" adds a "This semester" tag
+export const coursework = [
+  {
+    group: 'Artificial Intelligence',
+    items: [
+      { name: 'Machine Learning' },
+      { name: 'Deep Learning', now: true },
+      { name: 'Computer Vision' },
+      { name: 'Natural Language Processing' },
+      { name: 'Speech Recognition', now: true },
+      { name: 'Computational Biology' },
+      { name: 'Research Methodology' },
+    ],
+  },
+  {
+    group: 'Computer Science core',
+    items: [
+      { name: 'Algorithm & Programming' },
+      { name: 'Software Engineering' },
+      { name: 'Operating Systems', now: true },
+      { name: 'Network Security & Fundamentals', now: true },
+      { name: 'Object-Oriented Programming' },
+      { name: 'Database Systems' },
+    ],
+  },
+];
+
+export const certifications = [
+  {
+    title: 'Microsoft Elevate AI Training: Azure AI Fundamentals (AI-900T00-A)',
+    issuer: 'Microsoft × BINUS University × GreatNusa',
+    meta: ['15 hours', 'March 2026'],
+    file: '/certificates/microsoft-azure-ai-fundamentals.pdf',
+    thumb: '/certificates/microsoft-azure-ai-fundamentals.webp',
+  },
+];
+
+/* ─────────────── EXPERIENCE ───────────────
+   category: 'leadership' | 'media' | 'volunteer' | 'achievement' (or a list of them)
+   photos: files in /public/experience/<folder>/   polaroids: the two photos shown on hover (numbers)
+   captions: optional, same order as photos                                                    */
 export const experience = [
   {
-    category: 'leadership', title: 'Project Manager', org: 'LDKA · Cyber Security Community', period: '2026 – 2027', year: '2026',
-    description: "Leading the planning of the community's leadership training for new members.",
+    id: 'csc',
+    category: ['leadership', 'media', 'volunteer'],
+    label: 'Organization',
+    title: 'Cyber Security Community',
+    org: 'BINUS University · Alam Sutera',
+    subtitle: 'Regional Head · Alam Sutera',
+    period: '2024 – now',
+    year: 'Now',
+    description: 'Grew from the media team to leading the regional chapter and its leadership program.',
+    roles: [
+      { title: 'General Manager', where: 'LDKA', period: '27/28' },
+      { title: 'Project Manager', where: 'LDKA', period: '26/27' },
+      { title: 'Regional Head', where: 'Alam Sutera', period: '25/26', now: true },
+      { title: 'Director, Cyber Fortify Video', where: 'Media & Publication', period: '24/25' },
+    ],
+    highlights: [
+      'Speaker, “Branding” session · LDKCP CSC 2026: EAGLE',
+      'VIP Delegate, CSC Representative · Indonesia Apps Summit 2026',
+      'Event Secretary · CTF Contest CSC 2025',
+      'Media & Publication Committee · Rumpun Day Penalaran, PKM CSC, company visit to CTI Group',
+    ],
+    folder: 'csc',
+    photos: 8,
+    polaroids: [6, 8],
+    captions: [
+      'Campfire night at LDKCP CSC',
+      'LDKCP CSC 2025: ATLAS',
+      'Company visit to CTI Group',
+      'CSC Expo for Binusian 30',
+      'Study case session at LDKA CSC 26/27',
+      'LDKA CSC 26/27',
+      'First meeting of CSC activists 26/27',
+      'LDKCP CSC 2026: EAGLE, where I delivered the Branding session',
+    ],
   },
   {
-    category: 'leadership', title: 'Regional Head', org: 'Cyber Security Community · Alam Sutera', period: '2025 – 2026', year: '2025',
-    description: 'Coordinating the regional team, its programs, and its members.',
+    id: 'freshman-leader',
+    category: 'leadership',
+    title: 'Freshman Leader',
+    org: 'BINUS University · Binusian 29 & 30',
+    period: '2025 & 2026',
+    year: '2025',
+    description: 'Led new students through BINUS campus orientation, helping them get to know campus life from day one.',
+    folder: 'freshman-leader',
+    photos: 10,
+    polaroids: [4, 5],
   },
   {
-    category: 'media', title: 'Director, Cyber Fortify Video', org: 'CSC · Media & Publication Division', period: '2025 – 2026', year: '2025',
-    description: "Directed the community's cyber-awareness video from concept to final cut.",
+    id: 'freshman-partner',
+    category: 'leadership',
+    title: 'Freshman Partner',
+    org: 'BINUS University · Binusian 29 & 30',
+    period: '2025 & 2026',
+    year: '2025',
+    description: 'Accompanied and led a group of freshmen through their first-year adaptation at BINUS.',
+    folder: 'freshman-partner',
+    photos: 5,
+    polaroids: [1, 5],
   },
   {
-    category: 'leadership', title: 'Freshman Leader & Partner', org: 'BINUS University · B29', period: '2025', year: '2025',
-    description: 'Guided a group of new students through their first semester on campus.',
-  },
-  {
-    category: 'learning', title: 'B.Sc. Computer Science', org: 'BINUS University', period: '2024 – 2028', year: '2024',
-    description: 'Algorithms, software engineering, and web development.',
-  },
-  {
-    category: 'achievement', title: '1st Place, 3D Bulletin Board', org: 'Museum Waja Sampai Kaputing', period: '2023', year: '2023',
+    id: 'bulletin-board',
+    category: 'achievement',
+    title: '1st Place, 3D Bulletin Board',
+    org: 'Museum Waja Sampai Kaputing',
+    period: '2023',
+    year: '2023',
     description: 'Won out of 144 participants for Indonesian Museum Day.',
+    folder: 'bulletin-board',
+    photos: 3,
+    polaroids: [1, 2],
+    captions: [
+      'With our 3D bulletin board diorama',
+      'The team behind the winning entry',
+      '1st place, Indonesian Museum Day 2023',
+    ],
   },
   {
-    category: 'leadership', title: 'Treasurer, Student Council', org: 'SMA Kristen Kanaan Banjarmasin', period: '2022 – 2023', year: '2022',
-    description: "Managed the council's budget and finances.",
+    id: 'student-council',
+    category: ['leadership', 'volunteer'],
+    label: 'Leadership',
+    title: 'Treasurer, Student Council',
+    org: 'SMA Kristen Kanaan Banjarmasin',
+    period: '2022 – 2023',
+    year: '2022',
+    description: "Managed the student council's budget and finances, and served on the committee of a national-scale basketball competition in South Kalimantan.",
+    highlights: ['Committee · National-scale basketball competition, South Kalimantan'],
+    folder: 'student-council',
+    photos: 5,
+    polaroids: [2, 3],
+    captions: [
+      'Independence Day celebration at school',
+      'Bazaar at KBC XI',
+      'MPLS (new student orientation) committee',
+      'Media sponsor for a product booth at KBC XI',
+      'LDKS, student council leadership training 2022/2023',
+    ],
   },
 ];
 
@@ -115,92 +258,149 @@ export const experienceFilters = [
   { id: 'all', label: 'All' },
   { id: 'leadership', label: 'Leadership' },
   { id: 'media', label: 'Media & Publication' },
-  { id: 'learning', label: 'Learning' },
   { id: 'volunteer', label: 'Volunteer' },
   { id: 'achievement', label: 'Achievement' },
 ];
 
-// Projects for "My Work".
-// Put screenshots in /public/projects/ and write the path, e.g. '/projects/plan-desktop.png'
-// desktop = wide screenshot, mobile = phone screenshot, gallery = extra images for the detail page
-// TODO: replace these placeholders with your real projects
-// featured: true → shown in "Selected work". Every project appears on the "All projects" page.
-// category is used for the filters on the "All projects" page (e.g. 'Web', 'Mobile', 'AI', 'Design').
+/* ─────────────── PROJECTS ───────────────
+   Screenshots live in /public/projects/<slug>/
+   layout: 'web' = browser + phone, 'mobile' = three phones
+   featured: true → shown in "Selected work". Every project appears on "All projects".                  */
 export const projects = [
   {
-    id: 'project-one',
+    id: 'sinefolis',
     featured: true,
     category: 'Web',
     year: '2026',
-    name: 'Project One',
-    type: 'Web App',
-    summary: 'One line on what the website does and who it helps.',
-    stack: ['React', 'Tailwind', 'Supabase'],
-    role: 'Front-end developer',
-    delivered: 'Responsive web app',
-    live: '',
-    repo: '',
-    desktop: '',
-    mobile: '',
-    gallery: [],
+    name: 'Sinéfolis',
+    type: 'Cinema booking web app',
+    summary: 'A cinema booking web app with real movies now showing in Indonesia, redesigned and rebuilt from my HCI course prototype.',
+    role: 'Solo · UI/UX redesign, front-end, serverless',
+    facts: [
+      { label: 'Role', value: 'Solo: UI/UX redesign, front-end and serverless back-end' },
+      { label: 'Origin', value: 'My Human–Computer Interaction course prototype, BINUS' },
+      { label: 'Result', value: 'Live web app · 9 pages · real TMDB data · desktop & mobile' },
+    ],
+    stack: ['React', 'Vite', 'Tailwind CSS', 'React Router', 'Motion', 'TMDB API', 'Vercel Functions'],
+    live: 'https://sinefolis-cinema.vercel.app',
+    repo: 'https://github.com/vaniallic/sinefolis',
+    layout: 'web',
+    cover: '/projects/sinefolis/home.webp',
+    hero: '/projects/sinefolis/showtimes.webp',
+    phones: ['/projects/sinefolis/m-seats.webp', '/projects/sinefolis/m-ticket.webp'],
+    story: {
+      title: 'What I',
+      accent: 'fixed',
+      after: 'from my own prototype',
+      items: [
+        { problem: 'Navbar with no background', detail: 'covered content while scrolling.', fix: 'Gave it a background that blurs in on scroll.' },
+        { problem: 'Dark, empty hero', detail: 'with no headline or next step.', fix: 'Featured-movie carousel with title, info and a Book button.' },
+        { problem: 'No selected state', detail: 'on date and time, so users lost track.', fix: 'Clear selected states plus a step bar for the booking flow.' },
+        { problem: 'Placeholder cards', detail: 'with typos and impossible dates.', fix: 'Real content: 8 cinemas in 4 cities and working promo codes.' },
+      ],
+    },
+    galleryTitle: ['The booking', 'flow'],
+    gallery: [
+      { src: '/projects/sinefolis/detail.webp', cap: 'Movie detail with trailer and cast' },
+      { src: '/projects/sinefolis/seats.webp', cap: 'Interactive seat map' },
+      { src: '/projects/sinefolis/checkout.webp', cap: 'Checkout with seat-hold timer' },
+      { src: '/projects/sinefolis/ticket.webp', cap: 'E-ticket with QR code' },
+      { src: '/projects/sinefolis/promotions.webp', cap: 'Promotions with copyable codes' },
+      { src: '/projects/sinefolis/home.webp', cap: 'Home with featured-movie carousel' },
+    ],
   },
   {
-    id: 'project-two',
+    id: 'medimeet',
     featured: true,
-    category: 'Web',
-    year: '2025',
-    name: 'Project Two',
-    type: 'Website',
-    summary: 'One line on what the website does and who it helps.',
-    stack: ['HTML', 'CSS', 'JavaScript'],
-    role: 'Designer & developer',
-    delivered: 'Marketing website',
-    live: '',
-    repo: '',
-    desktop: '',
-    mobile: '',
-    gallery: [],
+    category: 'Mobile',
+    year: '2026',
+    name: 'MediMeet',
+    type: 'Healthcare booking app · PWA',
+    summary: 'Find a doctor, book a consultation, pay and pick up prescriptions in one mobile-first app with real accounts and live map data.',
+    role: 'Concept from a group course project · designed and built solo',
+    facts: [
+      { label: 'Role', value: 'Designed and built the working app on my own' },
+      { label: 'Origin', value: 'Concept and Figma prototype from a group course project' },
+      { label: 'Result', value: 'Live PWA · 17 pages · 7 database tables · 10 server functions' },
+    ],
+    stack: ['React 19', 'Tailwind CSS', 'React Router', 'Supabase', 'PostgreSQL', 'Leaflet', 'OpenStreetMap', 'PWA'],
+    live: 'https://medimeet-mauve.vercel.app',
+    repo: 'https://github.com/vaniallic/MediMeet',
+    layout: 'mobile',
+    cover: '/projects/medimeet/home.webp',
+    phones: ['/projects/medimeet/home.webp', '/projects/medimeet/doctor.webp', '/projects/medimeet/success.webp'],
+    story: {
+      title: 'Technical',
+      accent: 'challenges',
+      after: '',
+      items: [
+        { problem: 'Two people, one time slot', detail: 'could book the same doctor at the same moment.', fix: 'Enforced in the database with a partial unique index; unpaid bookings release after 15 minutes.' },
+        { problem: 'Keeping data private', detail: 'when every user shares one database.', fix: 'Row Level Security and SQL functions handle payment, cancellation and pickup on the server.' },
+        { problem: 'Trying it without a backend', detail: 'so reviewers can open it instantly.', fix: 'Two data layers with the same interface: local demo mode and Supabase, switched by one variable.' },
+        { problem: 'Real places, no paid API', detail: 'for nearby hospitals and pharmacies.', fix: 'OpenStreetMap tiles with Overpass and Nominatim, called only when needed.' },
+      ],
+    },
+    galleryTitle: ['From search to', 'prescription'],
+    gallery: [
+      { src: '/projects/medimeet/landing.webp', cap: 'Landing', mobile: true },
+      { src: '/projects/medimeet/home.webp', cap: 'Home and services', mobile: true },
+      { src: '/projects/medimeet/specialists.webp', cap: 'Choose a specialist', mobile: true },
+      { src: '/projects/medimeet/doctor.webp', cap: 'Pick a date and time', mobile: true },
+      { src: '/projects/medimeet/checkout.webp', cap: 'Checkout', mobile: true },
+      { src: '/projects/medimeet/pay.webp', cap: 'Simulated QRIS payment', mobile: true },
+      { src: '/projects/medimeet/success.webp', cap: 'Queue number', mobile: true },
+      { src: '/projects/medimeet/pharmacy.webp', cap: 'Prescription pickup', mobile: true },
+    ],
+    note: 'Doctors, schedules, fees and payments are simulated. Partner hospitals come from the original prototype.',
   },
   {
-    id: 'project-three',
+    id: 'waste2taste',
     featured: true,
-    category: 'Web',
-    year: '2025',
-    name: 'Project Three',
-    type: 'Web App',
-    summary: 'One line on what the website does and who it helps.',
-    stack: ['Node.js', 'Express', 'PostgreSQL'],
-    role: 'Full-stack developer',
-    delivered: 'Web app with database',
-    live: '',
-    repo: '',
-    desktop: '',
-    mobile: '',
-    gallery: [],
-  },
-  {
-    id: 'project-four',
-    featured: false,
-    category: 'AI',
-    year: '2025',
-    name: 'Project Four',
-    type: 'AI / ML',
-    summary: 'One line on what the project does and who it helps.',
-    stack: ['Python', 'Flask'],
-    role: 'Developer',
-    delivered: 'Prediction web app',
-    live: '',
-    repo: '',
-    desktop: '',
-    mobile: '',
-    gallery: [],
+    category: 'Mobile',
+    year: '2026',
+    name: 'Waste2Taste',
+    type: 'Food-waste app · Flutter PWA',
+    summary: 'Turns what is in your fridge into dinner ideas, flags what will spoil first, and reads ingredients from a photo with Gemini.',
+    role: 'Idea from a group project · rebuilt the app solo',
+    facts: [
+      { label: 'Role', value: 'Rebuilt the entire app on my own' },
+      { label: 'Origin', value: 'Idea from a Software Engineering group project, BINUS' },
+      { label: 'Result', value: 'Live PWA · 12 screens · ~4,250 lines · 68 commits' },
+    ],
+    stack: ['Flutter', 'Dart', 'Firebase Auth', 'Firestore', 'Node.js', 'Vercel', 'Gemini API', 'TheMealDB'],
+    live: 'https://waste2taste-372f4.web.app',
+    repo: 'https://github.com/vaniallic/Waste2Taste',
+    layout: 'mobile',
+    cover: '/projects/waste2taste/home.webp',
+    phones: ['/projects/waste2taste/home.webp', '/projects/waste2taste/recipes.webp', '/projects/waste2taste/cook.webp'],
+    story: {
+      title: 'Technical',
+      accent: 'challenges',
+      after: '',
+      items: [
+        { problem: 'Scans failing on phone photos', detail: 'that were several MB, over the server limit.', fix: 'The app shrinks each photo to a ~1024 px JPEG before sending it.' },
+        { problem: 'The AI model was retired', detail: 'and the new one was often overloaded.', fix: 'The backend tries several Gemini models in turn, 10 seconds each, set by an environment variable.' },
+        { problem: 'Scan results the app did not know', detail: 'because Gemini names things freely.', fix: 'Names are matched against the online catalogue: full name first, then word by word.' },
+        { problem: 'A paid API open to abuse', detail: 'since every scan costs quota.', fix: 'Key kept on the server, 10 scans per 10 minutes per IP, plus file type and size checks.' },
+      ],
+    },
+    galleryTitle: ['From fridge to', 'dinner'],
+    gallery: [
+      { src: '/projects/waste2taste/onboarding.webp', cap: 'Onboarding', mobile: true },
+      { src: '/projects/waste2taste/home.webp', cap: 'Fridge, spoil-first', mobile: true },
+      { src: '/projects/waste2taste/add.webp', cap: 'Add ingredients', mobile: true },
+      { src: '/projects/waste2taste/recipes.webp', cap: 'Cook now / Almost / Other', mobile: true },
+      { src: '/projects/waste2taste/recipe.webp', cap: 'What you have and what is missing', mobile: true },
+      { src: '/projects/waste2taste/cook.webp', cap: 'Cook mode with timers', mobile: true },
+      { src: '/projects/waste2taste/history.webp', cap: 'Cooking history', mobile: true },
+    ],
   },
 ];
 
 export const sections = [
-  { id: 'about', label: 'About Me', blurb: 'Who I am and what drives me.' },
-  { id: 'skills', label: 'Skills', blurb: 'Tools and technologies I work with.' },
-  { id: 'experience', label: 'Experience', blurb: "Where I've been and what I've learned." },
-  { id: 'work', label: 'My Work', blurb: "Selected projects I've built." },
+  { id: 'about', label: 'About Me', blurb: 'Who I am and how I work.' },
+  { id: 'skills', label: 'Skills', blurb: "Languages, frameworks, AI and security tools I've used." },
+  { id: 'experience', label: 'Experience', blurb: 'Leadership, orientation and campus events.' },
+  { id: 'work', label: 'My Work', blurb: 'Three live apps I designed and built.' },
   { id: 'contact', label: 'Contact', blurb: "Let's talk about working together." },
 ];
