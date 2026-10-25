@@ -4,7 +4,9 @@ import Icon from './Icon.jsx';
 import { skills, skillFilters, coursework, certifications } from '../data/content.js';
 import { skillIcons } from '../data/skillIcons.js';
 
-const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+// card numbers as roman numerals (works for any count)
+const toRoman = (n) => [[10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']]
+  .reduce((acc, [v, r]) => { while (n >= v) { acc += r; n -= v; } return acc; }, '');
 const CATEGORY_LABEL = {
   languages: 'Language', web: 'Web & Mobile', ai: 'AI & Data', cloud: 'Backend & Cloud', security: 'Security', tools: 'Tool',
 };
@@ -23,7 +25,7 @@ function SkillCard({ skill, index }) {
     >
       <span className="card-inner">
         <span className="face front">
-          <span className="num">{ROMAN[index] || index + 1}</span>
+          <span className="num">{toRoman(index + 1)}</span>
           <span className={`seal ${skill.tone}`}>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d={skillIcons[skill.icon]} /></svg>
           </span>

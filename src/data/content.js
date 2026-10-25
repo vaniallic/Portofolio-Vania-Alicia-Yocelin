@@ -27,12 +27,6 @@ export const contactForm = {
   needs: ['Internship opportunity', 'Freelance / project', 'Collaboration', 'Just saying hi'],
 };
 
-// The three numbers inside the book on the first screen
-export const stats = [
-  { value: 3, suffix: '', label: 'live apps' },
-  { value: 35, suffix: '+', label: 'tools & skills' },
-  { value: 2, suffix: '+', label: 'years of coding' },
-];
 
 /* ─────────────── ABOUT ─────────────── */
 export const about = {
@@ -54,14 +48,12 @@ export const about = {
 };
 
 /* ─────────────── SKILLS ───────────────
-   category: 'languages' | 'web' | 'ai' | 'cloud' | 'security' | 'tools'
+   category: 'languages' | 'web' | 'ai' | 'cloud' | 'tools'
    icon: key in skillIcons.js     color: the logo's own colour (shown on hover)
    tone: colour of the seal       used: shown on the back of the card
    level: 'Used in projects' | 'Used in labs' | 'Coursework' | 'Daily'            */
 export const skills = [
   { name: 'Python', category: 'languages', icon: 'python', color: '#3776AB', tone: 'fae', level: 'Coursework', used: 'AI coursework and model training in Colab' },
-  { name: 'C', category: 'languages', icon: 'c', color: '#A8B9CC', tone: 'opal', level: 'Coursework', used: 'Algorithm and programming coursework' },
-  { name: 'C++', category: 'languages', icon: 'cplusplus', color: '#00599C', tone: 'blood', level: 'Coursework', used: 'Object-oriented programming coursework' },
   { name: 'JavaScript', category: 'languages', icon: 'javascript', color: '#F7DF1E', tone: 'fae', level: 'Used in projects', used: 'Sinéfolis, MediMeet and this portfolio' },
   { name: 'Dart', category: 'languages', icon: 'dart', color: '#0175C2', tone: 'opal', level: 'Used in projects', used: 'Waste2Taste' },
   { name: 'SQL', category: 'languages', icon: 'sql', color: '#E07A5F', tone: 'blood', level: 'Used in projects', used: 'MediMeet database rules and database coursework' },
@@ -72,34 +64,31 @@ export const skills = [
   { name: 'Tailwind CSS', category: 'web', icon: 'tailwind', color: '#06B6D4', tone: 'fae', level: 'Used in projects', used: 'Sinéfolis and MediMeet' },
   { name: 'Flutter', category: 'web', icon: 'flutter', color: '#02569B', tone: 'opal', level: 'Used in projects', used: 'Waste2Taste web app' },
   { name: 'Node.js', category: 'web', icon: 'node', color: '#5FA04E', tone: 'blood', level: 'Used in projects', used: 'Waste2Taste serverless API' },
-  { name: 'PWA', category: 'web', icon: 'pwa', color: '#5A0FC8', tone: 'fae', level: 'Used in projects', used: 'MediMeet and Waste2Taste, installable on phones' },
 
-  { name: 'TensorFlow', category: 'ai', icon: 'tensorflow', color: '#FF6F00', tone: 'fae', level: 'Coursework', used: 'Deep learning coursework' },
-  { name: 'Keras', category: 'ai', icon: 'keras', color: '#D00000', tone: 'opal', level: 'Coursework', used: 'Deep learning coursework' },
+  { name: 'TensorFlow', category: 'ai', icon: 'tensorflow', color: '#FF6F00', tone: 'fae', level: 'Coursework', used: 'Deep learning coursework, with Keras' },
   { name: 'scikit-learn', category: 'ai', icon: 'sklearn', color: '#F7931E', tone: 'blood', level: 'Coursework', used: 'Machine learning coursework' },
   { name: 'NumPy', category: 'ai', icon: 'numpy', color: '#4DABCF', tone: 'fae', level: 'Coursework', used: 'Data preparation for ML and vision tasks' },
   { name: 'Pandas', category: 'ai', icon: 'pandas', color: '#E70488', tone: 'opal', level: 'Coursework', used: 'Data cleaning and analysis' },
   { name: 'OpenCV', category: 'ai', icon: 'opencv', color: '#5C3EE8', tone: 'blood', level: 'Coursework', used: 'Computer vision coursework' },
-  { name: 'Matplotlib', category: 'ai', icon: 'matplotlib', color: '#11557C', tone: 'fae', level: 'Coursework', used: 'Plotting results and training curves' },
 
   { name: 'Supabase', category: 'cloud', icon: 'supabase', color: '#3FCF8E', tone: 'opal', level: 'Used in projects', used: 'MediMeet accounts, database and security rules' },
   { name: 'Firebase', category: 'cloud', icon: 'firebase', color: '#FFCA28', tone: 'blood', level: 'Used in projects', used: 'Waste2Taste auth, Firestore and hosting' },
   { name: 'Vercel', category: 'cloud', icon: 'vercel', color: '#1b0a22', tone: 'fae', level: 'Used in projects', used: 'Deploys and serverless functions' },
   { name: 'Gemini API', category: 'cloud', icon: 'gemini', color: '#8E75B2', tone: 'opal', level: 'Used in projects', used: 'Photo-to-ingredient scan in Waste2Taste' },
 
-  { name: 'Linux', category: 'security', icon: 'linux', color: '#E8A400', tone: 'blood', level: 'Used in labs', used: 'TryHackMe labs and the command line' },
-  { name: 'Kali Linux', category: 'security', icon: 'kali', color: '#557C94', tone: 'fae', level: 'Used in labs', used: 'TryHackMe labs' },
-  { name: 'Bash', category: 'security', icon: 'bash', color: '#4EAA25', tone: 'opal', level: 'Used in labs', used: 'Scripting and terminal work in labs' },
-  { name: 'Nmap', category: 'security', icon: 'nmap', color: '#4682B4', tone: 'blood', level: 'Used in labs', used: 'Port and service scanning in TryHackMe' },
-  { name: 'Wireshark', category: 'security', icon: 'wireshark', color: '#1679A7', tone: 'fae', level: 'Used in labs', used: 'Packet analysis in TryHackMe' },
-  { name: 'Burp Suite', category: 'security', icon: 'burp', color: '#FF6633', tone: 'opal', level: 'Used in labs', used: 'Web app testing in TryHackMe' },
-  { name: 'Netcat', category: 'security', icon: 'netcat', color: '#2E8B57', tone: 'blood', level: 'Used in labs', used: 'Listeners and reverse shells in labs' },
 
   { name: 'Figma', category: 'tools', icon: 'figma', color: '#F24E1E', tone: 'fae', level: 'Used in projects', used: 'Designing Sinéfolis and MediMeet' },
-  { name: 'VS Code', category: 'tools', icon: 'vscode', color: '#007ACC', tone: 'opal', level: 'Daily', used: 'Where everything gets written' },
-  { name: 'Google Colab', category: 'tools', icon: 'colab', color: '#F9AB00', tone: 'blood', level: 'Coursework', used: 'Training AI models' },
+  { name: 'Google Colab', category: 'ai', icon: 'colab', color: '#F9AB00', tone: 'blood', level: 'Coursework', used: 'Training AI models' },
   { name: 'Git & GitHub', category: 'tools', icon: 'github', color: '#1b0a22', tone: 'fae', level: 'Used in projects', used: 'Version control for every project' },
   { name: 'Canva', category: 'tools', icon: 'canva', color: '#00C4CC', tone: 'opal', level: 'Daily', used: 'Media and publications for organizations' },
+  { name: 'Procreate', category: 'tools', icon: 'procreate', color: '#F2795B', tone: 'blood', level: 'Daily', used: 'Digital illustration and graphic design' },
+];
+
+// The three numbers inside the book on the first screen.
+export const stats = [
+  { value: 5, suffix: '+', label: 'projects' },
+  { value: 20, suffix: '+', label: 'skills & tools' },
+  { value: 2, suffix: '+', label: 'years of coding' },
 ];
 
 export const skillFilters = [
@@ -107,7 +96,6 @@ export const skillFilters = [
   { id: 'web', label: 'Web & Mobile' },
   { id: 'ai', label: 'AI & Data' },
   { id: 'cloud', label: 'Backend & Cloud' },
-  { id: 'security', label: 'Security' },
   { id: 'tools', label: 'Tools' },
   { id: 'all', label: 'All' },
 ];
@@ -458,8 +446,8 @@ export const projects = [
 
 export const sections = [
   { id: 'about', label: 'About Me', blurb: 'Who I am and how I work.' },
-  { id: 'skills', label: 'Skills', blurb: "Languages, frameworks, AI and security tools I've used." },
+  { id: 'skills', label: 'Skills', blurb: "Languages, frameworks, AI and design tools I've used." },
   { id: 'experience', label: 'Experience', blurb: 'Leadership, orientation and campus events.' },
-  { id: 'work', label: 'My Work', blurb: 'Three live apps I designed and built.' },
+  { id: 'work', label: 'My Work', blurb: 'Apps and research I designed and built.' },
   { id: 'contact', label: 'Contact', blurb: "Let's talk about working together." },
 ];
