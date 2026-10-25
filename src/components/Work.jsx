@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Icon from './Icon.jsx';
-import { projects, profile } from '../data/content.js';
+import { projects, profile, publications } from '../data/content.js';
 
 const host = (url) => (url || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
 
@@ -40,6 +40,24 @@ export function Thumb({ project }) {
     <span className="thumb-phones">
       {project.phones.slice(0, 3).map((src) => <img key={src} src={src} alt="" loading="lazy" />)}
     </span>
+  );
+}
+
+/* Research paper: a small row under the projects (it has no app screens to show) */
+export function PaperRow({ pub }) {
+  return (
+    <div className="paper-row glass">
+      <a className="paper-thumb" href={pub.file} target="_blank" rel="noreferrer" aria-label={`Read paper: ${pub.title}`}><img src={pub.thumb} alt="" loading="lazy" /></a>
+      <span className="paper-info">
+        <span className="kind">Research paper · IEEE · {pub.meta[1].split(' ').pop()}</span>
+        <a className="paper-title" href={pub.file} target="_blank" rel="noreferrer">{pub.title}</a>
+        <span className="paper-venue">{pub.venue}</span>
+      </span>
+      <span className="paper-go">
+        <a href={pub.file} target="_blank" rel="noreferrer">Read PDF <Icon name="external" size={12} /></a>
+        {pub.xplore && <a href={pub.xplore} target="_blank" rel="noreferrer">IEEE Xplore <Icon name="external" size={12} /></a>}
+      </span>
+    </div>
   );
 }
 
@@ -118,6 +136,12 @@ export default function Work({ onOpen, onAll }) {
             ))}
           </ul>
           <a className="more-link" href={profile.github} target="_blank" rel="noreferrer">More on GitHub <Icon name="external" size={13} /></a>
+          {publications.length > 0 && (
+            <div className="research">
+              <span className="research-label">Research</span>
+              {publications.map((pub) => <PaperRow key={pub.title} pub={pub} />)}
+            </div>
+          )}
         </div>
 
         <div className="stage" style={{ '--i': 2 }}>
@@ -148,6 +172,12 @@ export default function Work({ onOpen, onAll }) {
         <div className="dots" aria-hidden="true">
           {featured.map((pr, i) => <i key={pr.id} className={i === slide ? 'is-on' : ''} />)}
         </div>
+        {publications.length > 0 && (
+          <div className="research">
+            <span className="research-label">Research</span>
+            {publications.map((pub) => <PaperRow key={pub.title} pub={pub} />)}
+          </div>
+        )}
       </div>
     </section>
   );

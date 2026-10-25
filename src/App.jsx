@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Backdrop from './components/Backdrop.jsx';
 import Navbar from './components/Navbar.jsx';
 import Cursor from './components/Cursor.jsx';
@@ -39,16 +39,37 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
 
-  const open = useCallback((hash) => {
-    if (window.location.hash !== hash) window.history.pushState({ overlay: true }, '', hash);
+  // each overlay remembers how many overlay steps deep it is, so we can leave all of them at once
+  const depth = () => (window.history.state && window.history.state.depth) || 0;
+
+  const open = useCallback((hash, replace = false) => {
+    if (window.location.hash !== hash) {
+      const prev = window.history.state || {};
+      // "from" = the page this overlay was opened from (kept when a page replaces another)
+      const state = replace
+        ? { overlay: true, depth: depth(), from: prev.from || '' }
+        : { overlay: true, depth: depth() + 1, from: window.location.hash };
+      if (replace) window.history.replaceState(state, '', hash);
+      else window.history.pushState(state, '', hash);
+    }
     setRoute(pageFromHash());
   }, []);
+
+  // one step back (All projects, Contact)
   const close = useCallback(() => {
-    if (window.history.state && window.history.state.overlay) window.history.back();
+    if (depth() > 0) window.history.back();
     else { window.history.replaceState(null, '', window.location.pathname); setRoute({ page: null, detail: null }); }
   }, []);
 
+  // case study back -> All projects (step back if we came from there, otherwise swap to it)
+  const closeDetail = useCallback(() => {
+    if ((window.history.state || {}).from === '#projects') window.history.back();
+    else open('#projects', true);
+  }, [open]);
+
   const openDetail = useCallback((i) => open(`#project-${i}`), [open]);
+  // next project inside a case study replaces the page instead of stacking history
+  const goDetail = useCallback((i) => open(`#project-${i}`, true), [open]);
   const openAll = useCallback(() => open('#projects'), [open]);
   const openContact = useCallback(() => open('#contact-me'), [open]);
 
@@ -68,7 +89,7 @@ export default function App() {
       </main>
       {route.page === 'projects' && <AllProjects onClose={close} onOpen={openDetail} />}
       {route.page === 'contact' && <ContactPage onClose={close} />}
-      {route.detail !== null && <ProjectDetail index={route.detail} onClose={close} onGo={openDetail} />}
+      {route.detail !== null && <ProjectDetail index={route.detail} onClose={closeDetail} onGo={goDetail} />}
       <div className="grain" aria-hidden="true" />
     </>
   );

@@ -34,7 +34,7 @@ export default function ProjectDetail({ index, onClose, onGo }) {
     <div className="detail case" role="dialog" aria-modal="true" aria-labelledby="detail-title" ref={box} tabIndex={-1}>
       <div className="detail-bg" />
       <div className="detail-top">
-        <button type="button" onClick={onClose}><Icon name="arrowLeft" size={14} /> Back to all work</button>
+        <button type="button" onClick={onClose}><Icon name="arrowLeft" size={14} /> Back to all projects</button>
         <span className="pager">{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
       </div>
 

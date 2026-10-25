@@ -69,14 +69,14 @@ export default function Skills() {
 
       <div className="skills-extra" data-stagger style={{ '--base': '150ms' }}>
         <div className="extra-panel glass" style={{ '--i': 0 }}>
-          <div className="ep-head"><h3>Coursework</h3><span>BINUS · AI stream</span></div>
+          <div className="ep-head"><h3>Coursework</h3><span>BINUS University</span></div>
           {coursework.map((g) => (
             <div key={g.group} className="course-group">
               <div className="cg-label">{g.group}</div>
               <div className="course-chips">
                 {g.items.map((c) => (
                   <span key={c.name} className={`course ${c.now ? 'is-now' : ''}`}>
-                    {c.name}{c.now && <em>This semester</em>}
+                    {c.name}{c.now && <em>Now</em>}
                   </span>
                 ))}
               </div>

@@ -11,7 +11,7 @@ export const profile = {
   tagline: 'The girl behind the code',
   landingLine: 'Where code meets curiosity and creativity.',
   email: 'vania.yocelin@binus.ac.id',
-  linkedin: 'https://www.linkedin.com/in/vania-alicia-yocelin-936040440',
+  linkedin: 'https://www.linkedin.com/in/vania-alicia-yocelin',
   github: 'https://github.com/vaniallic',
   // Put your CV file in the /public folder with this exact name
   cv: '/Vania-Alicia-Yocelin-CV.pdf',
@@ -23,7 +23,7 @@ export const profile = {
 // 1. go to https://web3forms.com, enter your email, and copy the "Access Key" they send you
 // 2. paste it below. Until then, the form opens the visitor's email app with everything filled in.
 export const contactForm = {
-  accessKey: '',
+  accessKey: 'ec9a3a76-941e-468c-92a9-cac950c6e77b',
   needs: ['Internship opportunity', 'Freelance / project', 'Collaboration', 'Just saying hi'],
 };
 
@@ -59,7 +59,7 @@ export const about = {
    tone: colour of the seal       used: shown on the back of the card
    level: 'Used in projects' | 'Used in labs' | 'Coursework' | 'Daily'            */
 export const skills = [
-  { name: 'Python', category: 'languages', icon: 'python', color: '#3776AB', tone: 'fae', level: 'Coursework', used: 'AI stream coursework and model training in Colab' },
+  { name: 'Python', category: 'languages', icon: 'python', color: '#3776AB', tone: 'fae', level: 'Coursework', used: 'AI coursework and model training in Colab' },
   { name: 'C', category: 'languages', icon: 'c', color: '#A8B9CC', tone: 'opal', level: 'Coursework', used: 'Algorithm and programming coursework' },
   { name: 'C++', category: 'languages', icon: 'cplusplus', color: '#00599C', tone: 'blood', level: 'Coursework', used: 'Object-oriented programming coursework' },
   { name: 'JavaScript', category: 'languages', icon: 'javascript', color: '#F7DF1E', tone: 'fae', level: 'Used in projects', used: 'Sinéfolis, MediMeet and this portfolio' },
@@ -112,7 +112,7 @@ export const skillFilters = [
   { id: 'all', label: 'All' },
 ];
 
-// "now: true" adds a "This semester" tag
+// "now: true" adds a "Now" tag
 export const coursework = [
   {
     group: 'Artificial Intelligence',
@@ -146,6 +146,21 @@ export const certifications = [
     meta: ['15 hours', 'March 2026'],
     file: '/certificates/microsoft-azure-ai-fundamentals.pdf',
     thumb: '/certificates/microsoft-azure-ai-fundamentals.webp',
+  },
+];
+
+/* Accepted (author) version only, with the IEEE notice stamped on page 1.
+   IEEE rules: never upload the IEEE Xplore version; always link to the published paper. */
+export const publications = [
+  {
+    title: 'Evaluating the Robustness of Transformer-based Models Against Data Poisoning Attacks in Social Media Sentiment Analysis',
+    venue: '13th ICISS 2026 · Institut Teknologi Bandung',
+    authors: 'C. Augustine, D. Nicholas, V. A. Yocelin, F. R. Tambunan, Meiliana',
+    role: 'Fine-tuned and evaluated RoBERTa, literature review, Related Works chapter, poster and research trailer',
+    meta: ['IEEE Xplore', 'October 2026'],
+    file: '/publications/iciss-2026-data-poisoning.pdf',
+    thumb: '/publications/iciss-2026-data-poisoning.webp',
+    xplore: 'https://ieeexplore.ieee.org/document/11715026',
   },
 ];
 
@@ -207,7 +222,7 @@ export const experience = [
     category: 'leadership',
     title: 'Freshman Partner',
     org: 'BINUS University · Binusian 29 & 30',
-    period: '2025 & 2026',
+    period: '2025 – now',
     year: '2025',
     description: 'Accompanied and led a group of freshmen through their first-year adaptation at BINUS.',
     folder: 'freshman-partner',
@@ -271,14 +286,14 @@ export const projects = [
     id: 'sinefolis',
     featured: true,
     category: 'Web',
-    year: '2026',
+    year: '2025 – 26',
     name: 'Sinéfolis',
     type: 'Cinema booking web app',
     summary: 'A cinema booking web app with real movies now showing in Indonesia, redesigned and rebuilt from my HCI course prototype.',
     role: 'Solo · UI/UX redesign, front-end, serverless',
     facts: [
       { label: 'Role', value: 'Solo: UI/UX redesign, front-end and serverless back-end' },
-      { label: 'Origin', value: 'My Human–Computer Interaction course prototype, BINUS' },
+      { label: 'Origin', value: 'My Human–Computer Interaction course prototype, BINUS (Aug 2025) · rebuilt in 2026' },
       { label: 'Result', value: 'Live web app · 9 pages · real TMDB data · desktop & mobile' },
     ],
     stack: ['React', 'Vite', 'Tailwind CSS', 'React Router', 'Motion', 'TMDB API', 'Vercel Functions'],
@@ -313,14 +328,14 @@ export const projects = [
     id: 'medimeet',
     featured: true,
     category: 'Mobile',
-    year: '2026',
+    year: '2025 – now',
     name: 'MediMeet',
     type: 'Healthcare booking app · PWA',
     summary: 'Find a doctor, book a consultation, pay and pick up prescriptions in one mobile-first app with real accounts and live map data.',
     role: 'Concept from a group course project · designed and built solo',
     facts: [
       { label: 'Role', value: 'Designed and built the working app on my own' },
-      { label: 'Origin', value: 'Concept and Figma prototype from a group course project' },
+      { label: 'Origin', value: 'Concept and Figma prototype from a group course project (Jun 2025) · built in 2026' },
       { label: 'Result', value: 'Live PWA · 17 pages · 7 database tables · 10 server functions' },
     ],
     stack: ['React 19', 'Tailwind CSS', 'React Router', 'Supabase', 'PostgreSQL', 'Leaflet', 'OpenStreetMap', 'PWA'],
@@ -357,14 +372,14 @@ export const projects = [
     id: 'waste2taste',
     featured: true,
     category: 'Mobile',
-    year: '2026',
+    year: '2026 – now',
     name: 'Waste2Taste',
     type: 'Food-waste app · Flutter PWA',
     summary: 'Turns what is in your fridge into dinner ideas, flags what will spoil first, and reads ingredients from a photo with Gemini.',
     role: 'Idea from a group project · rebuilt the app solo',
     facts: [
       { label: 'Role', value: 'Rebuilt the entire app on my own' },
-      { label: 'Origin', value: 'Idea from a Software Engineering group project, BINUS' },
+      { label: 'Origin', value: 'Idea from a Software Engineering group project, BINUS (Jun 2026) · rebuilt solo' },
       { label: 'Result', value: 'Live PWA · 12 screens · ~4,250 lines · 68 commits' },
     ],
     stack: ['Flutter', 'Dart', 'Firebase Auth', 'Firestore', 'Node.js', 'Vercel', 'Gemini API', 'TheMealDB'],

@@ -1,16 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Icon from './Icon.jsx';
-import { projects } from '../data/content.js';
+import { projects, publications } from '../data/content.js';
 import { Thumb } from './Work.jsx';
 
 /* Full-screen page with every project, filterable by category. */
 export default function AllProjects({ onClose, onOpen }) {
   const box = useRef(null);
   const [filter, setFilter] = useState('All');
-  const cats = useMemo(() => ['All', ...Array.from(new Set(projects.map((p) => p.category || 'Other')))], []);
+  const cats = useMemo(() => ['All', ...Array.from(new Set(projects.map((p) => p.category || 'Other'))), ...(publications.length ? ['Research'] : [])], []);
   const list = projects
     .map((p, gi) => ({ ...p, gi }))
     .filter((p) => filter === 'All' || (p.category || 'Other') === filter);
+  const papers = filter === 'All' || filter === 'Research' ? publications : [];
+  const total = list.length + papers.length;
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -26,7 +28,7 @@ export default function AllProjects({ onClose, onOpen }) {
       <div className="detail-bg" />
       <div className="detail-top">
         <button type="button" onClick={onClose}><Icon name="arrowLeft" size={14} /> Back</button>
-        <span className="pager">{list.length} PROJECT{list.length === 1 ? '' : 'S'}</span>
+        <span className="pager">{total} PROJECT{total === 1 ? '' : 'S'}</span>
       </div>
 
       <div className="page-body">
@@ -58,6 +60,21 @@ export default function AllProjects({ onClose, onOpen }) {
               </span>
               <span className="pm-go" aria-hidden="true"><Icon name="arrowRight" size={16} /></span>
             </button>
+          ))}
+          {papers.map((pub, i) => (
+            <a key={pub.title} className="proj-card glass" style={{ '--i': list.length + i }} href={pub.xplore || pub.file} target="_blank" rel="noreferrer">
+              <span className="proj-thumb thumb-paper">
+                <img src={pub.thumb} alt="" loading="lazy" />
+                <span className="badge">Publication</span>
+              </span>
+              <span className="proj-meta">
+                <span className="pm-top"><span className="kind">Research paper · IEEE</span><span className="year">{pub.meta[1].split(' ').pop()}</span></span>
+                <span className="pm-name">{pub.title}</span>
+                <span className="pm-sum">{pub.venue}. My part: {pub.role.charAt(0).toLowerCase() + pub.role.slice(1)}.</span>
+                <span className="pm-stack">{['BERT', 'RoBERTa', 'BERTweet', 'Python'].map((s) => <span key={s}>{s}</span>)}</span>
+              </span>
+              <span className="pm-go" aria-hidden="true"><Icon name="external" size={15} /></span>
+            </a>
           ))}
         </div>
       </div>
